@@ -14,4 +14,10 @@ public class GlobalExceptionHandler {
         var errorDTO = new ErrorDTO(notFoundException.getMessage(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDTO);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorDTO> handleGlobalException(Exception exception) {
+        var errorDTO = new ErrorDTO(exception.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDTO);
+    }
 }

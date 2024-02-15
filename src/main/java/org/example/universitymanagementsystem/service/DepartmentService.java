@@ -1,9 +1,14 @@
 package org.example.universitymanagementsystem.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.universitymanagementsystem.dto.CreateDepartmentDTO;
 import org.example.universitymanagementsystem.dto.DepartmentDTO;
+import org.example.universitymanagementsystem.dto.DepartmentDetailsDTO;
+import org.example.universitymanagementsystem.dto.UpdateDepartmentDto;
+import org.example.universitymanagementsystem.exception.DepartmentNotFoundException;
 import org.example.universitymanagementsystem.mapper.DepartmentMapper;
 import org.example.universitymanagementsystem.repository.DepartmentRepository;
+import org.example.universitymanagementsystem.repository.entity.DepartmentEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,4 +24,28 @@ public class DepartmentService {
         return departmentMapper.toDepartmentDTOList(departmentEntities);
     }
 
+    public DepartmentDetailsDTO findById(Long id) {
+        return departmentMapper.toDepartmentDetailsDTO(getDepartment(id));
+    }
+
+    public void create(CreateDepartmentDTO createDepartmentDTO) {
+        var department = departmentMapper.toDepartment(createDepartmentDTO);
+        departmentRepository.save(department);
+    }
+
+    public void update(Long id, UpdateDepartmentDto updateDepartmentDto) {
+        var department = getDepartment(id);
+        departmentMapper.toDepartment(updateDepartmentDto, department);
+        departmentRepository.save(department);
+    }
+
+    public void delete(Long id) {
+        var department = getDepartment(id);
+        department.setDeleted(true);
+        departmentRepository.save(department);
+    }
+
+    private DepartmentEntity getDepartment(Long id) {
+        return departmentRepository.findById(id).orElseThrow(() -> new DepartmentNotFoundException("Department not found with id:" + id));
+    }
 }
