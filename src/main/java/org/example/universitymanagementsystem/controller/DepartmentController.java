@@ -21,5 +21,4 @@ public class DepartmentController {
     public ResponseEntity<List<DepartmentDTO>> findAll(){
         return ResponseEntity.status(HttpStatus.OK).body(departmentService.findAll());
     }
-
 }
