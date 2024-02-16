@@ -5,7 +5,7 @@ import org.example.universitymanagementsystem.dto.CreateInstructorDTO;
 import org.example.universitymanagementsystem.dto.InstructorDTO;
 import org.example.universitymanagementsystem.dto.InstructorDetailsDTO;
 import org.example.universitymanagementsystem.dto.UpdateInstructorDTO;
-import org.example.universitymanagementsystem.exception.DepartmentNotFoundException;
+import org.example.universitymanagementsystem.exception.InstructorNotFoundException;
 import org.example.universitymanagementsystem.mapper.InstructorMapper;
 import org.example.universitymanagementsystem.repository.InstructorRepository;
 import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
@@ -46,7 +46,8 @@ public class InstructorService {
     }
 
     private InstructorEntity getInstructor(Long id) {
-        return instructorRepository.findById(id).orElseThrow(() -> new DepartmentNotFoundException("Instructor not found with id:" + id));
+        return instructorRepository.findById(id)
+                .orElseThrow(() -> new InstructorNotFoundException("Instructor not found with id:" + id));
     }
 
 }
