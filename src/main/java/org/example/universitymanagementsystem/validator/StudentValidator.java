@@ -15,9 +15,9 @@ public class StudentValidator {
         validateCredit(studentEntity, courseEntity.getCredit());
     }
 
-    private void validateCourseExistence(StudentEntity studentEntity, CourseEntity courseEntity) {
+    private void validateCourseExistence(StudentEntity studentEntity, CourseEntity course) {
         var response = studentEntity.getCourses().stream()
-                .anyMatch(courseEntity1 -> Objects.equals(courseEntity1.getId(), courseEntity.getId()));
+                .anyMatch(existingCourse -> Objects.equals(existingCourse.getId(), course.getId()));
 
         if (response) {
             throw new StudentValidationException("Course already is enrolled");
