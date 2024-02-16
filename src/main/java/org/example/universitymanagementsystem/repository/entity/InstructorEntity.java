@@ -23,6 +23,7 @@ public class InstructorEntity {
     private Long id;
     private String name;
     private String experience;
+    private boolean isDeleted;
 
     @CreationTimestamp
     private Instant createdAt;

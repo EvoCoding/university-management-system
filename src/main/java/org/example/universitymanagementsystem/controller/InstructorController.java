@@ -15,7 +15,6 @@ import java.util.List;
 public class InstructorController {
     private final InstructorService instructorService;
 
-
     @GetMapping
     public ResponseEntity<List<InstructorDTO>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(instructorService.findAll());
@@ -34,6 +33,12 @@ public class InstructorController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody UpdateInstructorDTO updateInstructorDTO) {
        instructorService.update(id, updateInstructorDTO);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void>delete(@PathVariable Long id){
+        instructorService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
