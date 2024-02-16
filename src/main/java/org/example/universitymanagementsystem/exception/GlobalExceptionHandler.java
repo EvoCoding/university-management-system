@@ -15,6 +15,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDTO);
     }
 
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<ErrorDTO> handleValidation(ValidationException validationException) {
+        var errorDTO = new ErrorDTO(validationException.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDTO> handleGlobalException(Exception exception) {
         var errorDTO = new ErrorDTO(exception.getMessage(), LocalDateTime.now());

@@ -34,7 +34,7 @@ public class CourseEntity {
     @UpdateTimestamp
     private Instant modifiedAt;
 
-    @ManyToMany(mappedBy = "courses",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<StudentEntity> students;
 
     @ManyToOne

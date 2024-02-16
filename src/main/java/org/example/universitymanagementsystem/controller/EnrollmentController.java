@@ -17,7 +17,7 @@ public class EnrollmentController {
     private final EnrollmentService enrollmentService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody CreateEnrollmentDTO createEnrollmentDTO){
+    public ResponseEntity<Void> create(@RequestBody CreateEnrollmentDTO createEnrollmentDTO) {
         enrollmentService.create(createEnrollmentDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
