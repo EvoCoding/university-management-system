@@ -1,5 +1,10 @@
 package org.example.universitymanagementsystem.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class UpdateCourseDTO {
     private String name;
     private Long capacity;

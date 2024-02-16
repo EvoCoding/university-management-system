@@ -6,6 +6,7 @@ import org.example.universitymanagementsystem.dto.DepartmentDTO;
 import org.example.universitymanagementsystem.dto.DepartmentDetailsDTO;
 import org.example.universitymanagementsystem.dto.UpdateDepartmentDto;
 import org.example.universitymanagementsystem.exception.DepartmentNotFoundException;
+import org.example.universitymanagementsystem.manager.DepartmentManager;
 import org.example.universitymanagementsystem.mapper.DepartmentMapper;
 import org.example.universitymanagementsystem.repository.DepartmentRepository;
 import org.example.universitymanagementsystem.repository.entity.DepartmentEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
     private final DepartmentMapper departmentMapper;
+    private final DepartmentManager departmentManager;
 
     public List<DepartmentDTO> findAll() {
         var departmentEntities = departmentRepository.findAll();
@@ -25,7 +27,7 @@ public class DepartmentService {
     }
 
     public DepartmentDetailsDTO findById(Long id) {
-        return departmentMapper.toDepartmentDetailsDTO(getDepartment(id));
+        return departmentMapper.toDepartmentDetailsDTO(departmentManager.getDepartment(id));
     }
 
     public void create(CreateDepartmentDTO createDepartmentDTO) {
@@ -34,18 +36,15 @@ public class DepartmentService {
     }
 
     public void update(Long id, UpdateDepartmentDto updateDepartmentDto) {
-        var department = getDepartment(id);
+        var department = departmentManager.getDepartment(id);
         departmentMapper.toDepartment(updateDepartmentDto, department);
         departmentRepository.save(department);
     }
 
     public void delete(Long id) {
-        var department = getDepartment(id);
+        var department = departmentManager.getDepartment(id);
         department.setDeleted(true);
         departmentRepository.save(department);
     }
 
-    private DepartmentEntity getDepartment(Long id) {
-        return departmentRepository.findById(id).orElseThrow(() -> new DepartmentNotFoundException("Department not found with id:" + id));
-    }
 }

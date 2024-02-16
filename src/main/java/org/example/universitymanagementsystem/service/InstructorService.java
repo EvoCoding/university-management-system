@@ -6,6 +6,7 @@ import org.example.universitymanagementsystem.dto.InstructorDTO;
 import org.example.universitymanagementsystem.dto.InstructorDetailsDTO;
 import org.example.universitymanagementsystem.dto.UpdateInstructorDTO;
 import org.example.universitymanagementsystem.exception.InstructorNotFoundException;
+import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.InstructorMapper;
 import org.example.universitymanagementsystem.repository.InstructorRepository;
 import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 public class InstructorService {
     private final InstructorRepository instructorRepository;
     private final InstructorMapper instructorMapper;
+    private final InstructorManager instructorManager;
 
     public List<InstructorDTO> findAll() {
         var instructorEntities = instructorRepository.findAll();
@@ -25,7 +27,7 @@ public class InstructorService {
     }
 
     public InstructorDetailsDTO findById(Long id) {
-        return instructorMapper.toInstructorDetailsDTO(getInstructor(id));
+        return instructorMapper.toInstructorDetailsDTO(instructorManager.getInstructor(id));
     }
 
     public void create(CreateInstructorDTO createInstructorDTO) {
@@ -34,20 +36,15 @@ public class InstructorService {
     }
 
     public void update(Long id, UpdateInstructorDTO updateInstructorDTO) {
-        var instructor = getInstructor(id);
+        var instructor = instructorManager.getInstructor(id);
         instructorMapper.toInstructor(updateInstructorDTO, instructor);
         instructorRepository.save(instructor);
     }
 
     public void delete(Long id) {
-        var instructor = getInstructor(id);
+        var instructor = instructorManager.getInstructor(id);
         instructor.setDeleted(true);
         instructorRepository.save(instructor);
-    }
-
-    private InstructorEntity getInstructor(Long id) {
-        return instructorRepository.findById(id)
-                .orElseThrow(() -> new InstructorNotFoundException("Instructor not found with id:" + id));
     }
 
 }
