@@ -4,11 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.CourseDTO;
 import org.example.universitymanagementsystem.dto.CreateCourseDTO;
 import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
-import org.example.universitymanagementsystem.exception.CourseNotFoundException;
 import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.mapper.CourseMapper;
 import org.example.universitymanagementsystem.repository.CourseRepository;
-import org.example.universitymanagementsystem.repository.entity.CourseEntity;
+import org.example.universitymanagementsystem.validator.CourseValidator;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -20,6 +19,7 @@ public class CourseService {
     private final CourseMapper courseMapper;
     private final CourseRepository courseRepository;
     private final CourseManager courseManager;
+    private final CourseValidator courseValidator;
 
     public List<CourseDTO> findAll() {
         var courseEntities = courseRepository.findAll();
@@ -47,4 +47,12 @@ public class CourseService {
         courseRepository.save(course);
     }
 
+    public void updateCapacity(Long id, long capacity) {
+        var course = courseManager.getCourse(id);
+        if (course.getCapacity() != capacity) {
+            course.setCapacity(capacity);
+            courseValidator.validate(course);
+            courseRepository.save(course);
+        }
+    }
 }

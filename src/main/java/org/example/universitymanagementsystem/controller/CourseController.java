@@ -39,6 +39,12 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @PatchMapping("/{id}/capacity")
+    public ResponseEntity<Void> updateCapacity(@PathVariable Long id,@RequestParam long capacity){
+        courseService.updateCapacity(id,capacity);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         courseService.delete(id);

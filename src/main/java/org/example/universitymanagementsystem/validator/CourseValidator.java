@@ -12,8 +12,8 @@ public class CourseValidator {
     }
 
     private void validateCapacity(CourseEntity courseEntity) {
-        if (courseEntity.getStudents().size() == courseEntity.getCapacity()) {
-            throw new CourseValidationException("maximum capacity");
+        if (courseEntity.getStudents().size() >= courseEntity.getCapacity()) {
+            throw new CourseValidationException("invalid capacity");
         }
     }
 
