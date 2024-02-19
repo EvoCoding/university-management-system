@@ -6,6 +6,7 @@ import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.StudentManager;
 import org.example.universitymanagementsystem.repository.CourseRepository;
 import org.example.universitymanagementsystem.repository.StudentRepository;
+import org.example.universitymanagementsystem.validator.CourseValidator;
 import org.example.universitymanagementsystem.validator.StudentValidator;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +18,14 @@ public class EnrollmentService {
     private final StudentValidator studentValidator;
     private final StudentRepository studentRepository;
     private final CourseRepository courseRepository;
+    private final CourseValidator courseValidator;
 
     public void create(CreateEnrollmentDTO createEnrollmentDTO) {
         var course = courseManager.getCourse(createEnrollmentDTO.getCourseId());
         var student = studentManager.getStudent(createEnrollmentDTO.getStudentId());
 
         studentValidator.validate(student, course);
+        courseValidator.validate(course);
 
         course.getStudents().add(student);
         student.getCourses().add(course);
