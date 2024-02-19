@@ -40,8 +40,14 @@ public class CourseController {
     }
 
     @PatchMapping("/{id}/capacity")
-    public ResponseEntity<Void> updateCapacity(@PathVariable Long id,@RequestParam long capacity){
-        courseService.updateCapacity(id,capacity);
+    public ResponseEntity<Void> updateCapacity(@PathVariable Long id, @RequestParam long capacity) {
+        courseService.updateCapacity(id, capacity);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @PatchMapping("/{id}/instructor")
+    public ResponseEntity<Void> updateInstructor(@PathVariable Long id, @RequestParam(required = false) Long instructorId) {
+        courseService.updateInstructor(instructorId, id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

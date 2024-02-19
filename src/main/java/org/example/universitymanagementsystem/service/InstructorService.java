@@ -6,6 +6,7 @@ import org.example.universitymanagementsystem.dto.InstructorDTO;
 import org.example.universitymanagementsystem.dto.InstructorDetailsDTO;
 import org.example.universitymanagementsystem.dto.UpdateInstructorDTO;
 import org.example.universitymanagementsystem.exception.InstructorNotFoundException;
+import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.InstructorMapper;
 import org.example.universitymanagementsystem.repository.InstructorRepository;
@@ -20,6 +21,7 @@ public class InstructorService {
     private final InstructorRepository instructorRepository;
     private final InstructorMapper instructorMapper;
     private final InstructorManager instructorManager;
+    private final CourseManager courseManager;
 
     public List<InstructorDTO> findAll() {
         var instructorEntities = instructorRepository.findAll();
@@ -46,5 +48,4 @@ public class InstructorService {
         instructor.setDeleted(true);
         instructorRepository.save(instructor);
     }
-
 }

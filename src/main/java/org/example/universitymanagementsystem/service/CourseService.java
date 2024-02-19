@@ -5,6 +5,7 @@ import org.example.universitymanagementsystem.dto.CourseDTO;
 import org.example.universitymanagementsystem.dto.CreateCourseDTO;
 import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
 import org.example.universitymanagementsystem.manager.CourseManager;
+import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.CourseMapper;
 import org.example.universitymanagementsystem.repository.CourseRepository;
 import org.example.universitymanagementsystem.validator.CourseValidator;
@@ -20,6 +21,7 @@ public class CourseService {
     private final CourseRepository courseRepository;
     private final CourseManager courseManager;
     private final CourseValidator courseValidator;
+    private final InstructorManager instructorManager;
 
     public List<CourseDTO> findAll() {
         var courseEntities = courseRepository.findAll();
@@ -54,5 +56,17 @@ public class CourseService {
             courseValidator.validate(course);
             courseRepository.save(course);
         }
+    }
+
+    public void updateInstructor(Long instructorId, Long courseId) {
+        var course = courseManager.getCourse(courseId);
+        if (instructorId == null) {
+            course.setInstructor(null);
+            courseRepository.save(course);
+            return;
+        }
+        var instructor = instructorManager.getInstructor(instructorId);
+        course.setInstructor(instructor);
+        courseRepository.save(course);
     }
 }
