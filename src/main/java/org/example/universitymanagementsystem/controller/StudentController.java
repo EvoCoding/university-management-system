@@ -1,5 +1,6 @@
 package org.example.universitymanagementsystem.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.CreateStudentDTO;
 import org.example.universitymanagementsystem.dto.StudentDTO;
@@ -29,13 +30,13 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody CreateStudentDTO createStudentDTO) {
+    public ResponseEntity<Void> create(@RequestBody @Valid CreateStudentDTO createStudentDTO) {
         studentService.create(createStudentDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody UpdateStudentDTO updateStudentDTO) {
+    public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody @Valid UpdateStudentDTO updateStudentDTO) {
         studentService.update(id, updateStudentDTO);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

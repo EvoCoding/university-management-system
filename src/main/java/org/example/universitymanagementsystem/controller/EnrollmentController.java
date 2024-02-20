@@ -1,5 +1,6 @@
 package org.example.universitymanagementsystem.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.CreateEnrollmentDTO;
 import org.example.universitymanagementsystem.service.EnrollmentService;
@@ -17,7 +18,7 @@ public class EnrollmentController {
     private final EnrollmentService enrollmentService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody CreateEnrollmentDTO createEnrollmentDTO) {
+    public ResponseEntity<Void> create(@RequestBody @Valid CreateEnrollmentDTO createEnrollmentDTO) {
         enrollmentService.create(createEnrollmentDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

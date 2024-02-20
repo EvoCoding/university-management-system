@@ -1,5 +1,6 @@
 package org.example.universitymanagementsystem.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.CourseDTO;
 import org.example.universitymanagementsystem.dto.CreateCourseDTO;
@@ -34,7 +35,7 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody UpdateCourseDTO updateCourseDTO) {
+    public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody @Valid UpdateCourseDTO updateCourseDTO) {
         courseService.update(id, updateCourseDTO);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

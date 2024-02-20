@@ -2,6 +2,8 @@ package org.example.universitymanagementsystem.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -18,6 +20,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<ErrorDTO> handleValidation(ValidationException validationException) {
         var errorDTO = new ErrorDTO(validationException.getMessage(), LocalDateTime.now());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
+    }
+
+    @ExceptionHandler(value = BindException.class)
+    public ResponseEntity<ErrorDTO> handleMethodArgumentException(BindException bindException) {
+        FieldError fieldError = (FieldError) bindException.getBindingResult().getAllErrors().get(0);
+        var errorDTO = new ErrorDTO(fieldError.getDefaultMessage(), LocalDateTime.now());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
     }
 
