@@ -1,7 +1,6 @@
 package org.example.universitymanagementsystem.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,9 +8,9 @@ import lombok.Setter;
 @Setter
 public class CreateEnrollmentDTO {
 
-    @NotBlank(message = "Student Id cannot be empty.")
+    @NotNull(message = "Student Id cannot be empty.")
     private Long studentId;
 
-    @NotBlank(message = "Course Id cannot be empty.")
+    @NotNull(message = "Course Id cannot be empty.")
     private Long courseId;
 }
