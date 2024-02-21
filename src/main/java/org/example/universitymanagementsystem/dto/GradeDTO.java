@@ -1,8 +1,12 @@
 package org.example.universitymanagementsystem.dto;
 
-import java.time.Instant;
+import lombok.Getter;
+import lombok.Setter;
 
-public class GradeDto {
+import java.time.Instant;
+@Getter
+@Setter
+public class GradeDTO {
     private Long id;
     private Long studentId;
     private Long courseId;
