@@ -24,7 +24,7 @@ public class CourseService {
     private final InstructorManager instructorManager;
 
     public List<CourseDTO> findAll() {
-        var courseEntities = courseRepository.findAll();
+        var courseEntities = courseManager.findAll();
         return courseMapper.toCourseDTOList(courseEntities);
     }
 

@@ -6,6 +6,8 @@ import org.example.universitymanagementsystem.repository.StudentRepository;
 import org.example.universitymanagementsystem.repository.entity.StudentEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class StudentManager {
@@ -14,5 +16,9 @@ public class StudentManager {
     public StudentEntity getStudent(Long id) {
         return studentRepository.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException("student not found : " + id));
+    }
+
+    public List<StudentEntity> findAll() {
+        return studentRepository.findAll();
     }
 }

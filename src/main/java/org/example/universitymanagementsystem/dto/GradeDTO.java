@@ -4,16 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
-
 @Getter
 @Setter
-public class CourseDTO {
+public class GradeDTO {
     private Long id;
-    private String name;
-    private Long capacity;
-    private String code;
-    private int credit;
+    private Long studentId;
+    private Long courseId;
+    private Long instructorId;
     private Instant createdAt;
     private Instant modifiedAt;
-
 }

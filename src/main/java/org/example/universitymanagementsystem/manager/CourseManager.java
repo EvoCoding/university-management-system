@@ -6,6 +6,8 @@ import org.example.universitymanagementsystem.repository.CourseRepository;
 import org.example.universitymanagementsystem.repository.entity.CourseEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class CourseManager {
@@ -15,4 +17,9 @@ public class CourseManager {
         return courseRepository.findById(id)
                 .orElseThrow(() -> new CourseNotFoundException("Course Not Found: " + id));
     }
+
+    public List<CourseEntity> findAll() {
+        return courseRepository.findAll();
+    }
+
 }

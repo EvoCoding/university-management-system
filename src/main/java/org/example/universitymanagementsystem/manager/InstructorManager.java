@@ -6,6 +6,8 @@ import org.example.universitymanagementsystem.repository.InstructorRepository;
 import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class InstructorManager {
@@ -14,5 +16,9 @@ public class InstructorManager {
     public InstructorEntity getInstructor(Long id) {
         return instructorRepository.findById(id)
                 .orElseThrow(() -> new InstructorNotFoundException("Instructor not found with id:" + id));
+    }
+
+    public List<InstructorEntity> findAll() {
+        return instructorRepository.findAll();
     }
 }
