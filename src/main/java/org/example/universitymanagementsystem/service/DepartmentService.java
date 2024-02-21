@@ -5,11 +5,9 @@ import org.example.universitymanagementsystem.dto.CreateDepartmentDTO;
 import org.example.universitymanagementsystem.dto.DepartmentDTO;
 import org.example.universitymanagementsystem.dto.DepartmentDetailsDTO;
 import org.example.universitymanagementsystem.dto.UpdateDepartmentDto;
-import org.example.universitymanagementsystem.exception.DepartmentNotFoundException;
 import org.example.universitymanagementsystem.manager.DepartmentManager;
 import org.example.universitymanagementsystem.mapper.DepartmentMapper;
 import org.example.universitymanagementsystem.repository.DepartmentRepository;
-import org.example.universitymanagementsystem.repository.entity.DepartmentEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +20,7 @@ public class DepartmentService {
     private final DepartmentManager departmentManager;
 
     public List<DepartmentDTO> findAll() {
-        var departmentEntities = departmentRepository.findAll();
+        var departmentEntities = departmentManager.findAll();
         return departmentMapper.toDepartmentDTOList(departmentEntities);
     }
 

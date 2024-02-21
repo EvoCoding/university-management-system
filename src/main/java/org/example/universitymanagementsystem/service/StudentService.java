@@ -8,7 +8,6 @@ import org.example.universitymanagementsystem.exception.StudentNotFoundException
 import org.example.universitymanagementsystem.manager.StudentManager;
 import org.example.universitymanagementsystem.mapper.StudentMapper;
 import org.example.universitymanagementsystem.repository.StudentRepository;
-import org.example.universitymanagementsystem.repository.entity.StudentEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class StudentService {
 
 
     public List<StudentDTO> findAll() {
-        var studentEntities = studentRepository.findAll();
+        var studentEntities = studentManager.findAll();
         return studentMapper.toStudentDTOList(studentEntities);
     }
 

@@ -5,12 +5,10 @@ import org.example.universitymanagementsystem.dto.CreateInstructorDTO;
 import org.example.universitymanagementsystem.dto.InstructorDTO;
 import org.example.universitymanagementsystem.dto.InstructorDetailsDTO;
 import org.example.universitymanagementsystem.dto.UpdateInstructorDTO;
-import org.example.universitymanagementsystem.exception.InstructorNotFoundException;
 import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.InstructorMapper;
 import org.example.universitymanagementsystem.repository.InstructorRepository;
-import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +22,7 @@ public class InstructorService {
     private final CourseManager courseManager;
 
     public List<InstructorDTO> findAll() {
-        var instructorEntities = instructorRepository.findAll();
+        var instructorEntities = instructorManager.findAll();
         return instructorMapper.toInstructorDTOList(instructorEntities);
     }
 

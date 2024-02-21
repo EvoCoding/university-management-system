@@ -7,14 +7,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CourseValidator {
 
-    public void validate(CourseEntity course) {
-        validateCapacity(course);
+    public void validate(CourseEntity courseEntity) {
+        validateCapacity(courseEntity);
     }
 
     private void validateCapacity(CourseEntity courseEntity) {
-        if (courseEntity.getStudents().size() >= courseEntity.getCapacity()) {
-            throw new CourseValidationException("invalid capacity");
+        if (courseEntity.getStudents().size() == courseEntity.getCapacity()) {
+            throw new CourseValidationException("Course capacity exceeded");
         }
     }
-
 }
