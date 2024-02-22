@@ -3,47 +3,42 @@ package org.example.universitymanagementsystem.repository.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "course")
+@Table(name = "attendance")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CourseEntity {
+public class AttendanceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private Long capacity;
-    private String code;
-    private int credit;
-    private boolean isDeleted;
 
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private StudentEntity student;
+
+    @ManyToOne
+    @JoinColumn(name = "lesson_id", nullable = false)
+    private LessonEntity lesson;
+
+    @Enumerated(EnumType.STRING)
+    private AttendanceTypeEnum attendanceTypeEnum;
 
     @CreationTimestamp
     private Instant createdAt;
 
     @UpdateTimestamp
     private Instant modifiedAt;
-
-    @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<StudentEntity> students;
-
-    @ManyToOne
-    @JoinColumn(name = "instructor_id")
-    private InstructorEntity instructor;
-
-    @OneToMany(mappedBy = "course",fetch = FetchType.LAZY)
-    private List<LessonEntity> lessonEntities;
 
 
 }
