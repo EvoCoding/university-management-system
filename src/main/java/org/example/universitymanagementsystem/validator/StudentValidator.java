@@ -1,21 +1,21 @@
 package org.example.universitymanagementsystem.validator;
 
+import org.example.universitymanagementsystem.annotation.Validator;
 import org.example.universitymanagementsystem.exception.StudentValidationException;
 import org.example.universitymanagementsystem.repository.entity.CourseEntity;
 import org.example.universitymanagementsystem.repository.entity.StudentEntity;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
-@Component
+@Validator
 public class StudentValidator {
 
     public void validate(StudentEntity studentEntity, CourseEntity courseEntity) {
-        validateCourseExistence(studentEntity, courseEntity);
+        validateCourseExist(studentEntity, courseEntity);
         validateCredit(studentEntity, courseEntity.getCredit());
     }
 
-    private void validateCourseExistence(StudentEntity studentEntity, CourseEntity course) {
+    private void validateCourseExist(StudentEntity studentEntity, CourseEntity course) {
         var response = studentEntity.getCourses().stream()
                 .anyMatch(existingCourse -> Objects.equals(existingCourse.getId(), course.getId()));
 

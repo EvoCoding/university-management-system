@@ -1,12 +1,12 @@
 package org.example.universitymanagementsystem.validator;
 
+import org.example.universitymanagementsystem.annotation.Validator;
 import org.example.universitymanagementsystem.exception.LessonValidationException;
 import org.example.universitymanagementsystem.repository.entity.LessonEntity;
-import org.springframework.stereotype.Component;
 
 import java.time.temporal.ChronoUnit;
 
-@Component
+@Validator
 public class LessonValidator {
     public void validateLesson(LessonEntity lessonEntity) {
     validateDuration(lessonEntity);

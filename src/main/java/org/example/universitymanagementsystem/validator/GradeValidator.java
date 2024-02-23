@@ -1,12 +1,12 @@
 package org.example.universitymanagementsystem.validator;
 
+import org.example.universitymanagementsystem.annotation.Validator;
 import org.example.universitymanagementsystem.exception.GradeValidationException;
 import org.example.universitymanagementsystem.repository.entity.CourseEntity;
 import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
 import org.example.universitymanagementsystem.repository.entity.StudentEntity;
-import org.springframework.stereotype.Component;
 
-@Component
+@Validator
 public class GradeValidator {
     public void validate(StudentEntity student, CourseEntity course,InstructorEntity instructor) {
        validateCourseAndInstructor(course,instructor);
