@@ -7,6 +7,9 @@ import org.example.universitymanagementsystem.repository.entity.CourseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Component
 @RequiredArgsConstructor
@@ -18,8 +21,14 @@ public class CourseManager {
                 .orElseThrow(() -> new CourseNotFoundException("Course Not Found: " + id));
     }
 
-    public List<CourseEntity> findAll() {
-        return courseRepository.findAll();
+    public List<CourseEntity> findAllByIsDeleted() {
+
+        return courseRepository.findAllByIsDeleted(false);
+    }
+
+    public Optional<CourseEntity> findByIdAndIsDeleted(Long id) {
+        return courseRepository.findByIdAndIsDeleted(id, false);
+
     }
 
 }

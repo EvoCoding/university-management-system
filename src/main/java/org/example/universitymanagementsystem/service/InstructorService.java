@@ -5,6 +5,7 @@ import org.example.universitymanagementsystem.dto.CreateInstructorDTO;
 import org.example.universitymanagementsystem.dto.InstructorDTO;
 import org.example.universitymanagementsystem.dto.InstructorDetailsDTO;
 import org.example.universitymanagementsystem.dto.UpdateInstructorDTO;
+import org.example.universitymanagementsystem.exception.InstructorNotFoundException;
 import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.InstructorMapper;
@@ -22,11 +23,12 @@ public class InstructorService {
     private final CourseManager courseManager;
 
     public List<InstructorDTO> findAll() {
-        var instructorEntities = instructorManager.findAll();
+        var instructorEntities = instructorManager.findAllByIsDeleted();
         return instructorMapper.toInstructorDTOList(instructorEntities);
     }
 
     public InstructorDetailsDTO findById(Long id) {
+        var instructorEntity = instructorManager.findByIdAndIsDeleted(id).orElseThrow(() -> new InstructorNotFoundException("Instructor not found id : " + id));
         return instructorMapper.toInstructorDetailsDTO(instructorManager.getInstructor(id));
     }
 

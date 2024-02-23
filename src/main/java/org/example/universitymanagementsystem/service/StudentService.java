@@ -22,12 +22,12 @@ public class StudentService {
 
 
     public List<StudentDTO> findAll() {
-        var studentEntities = studentManager.findAll();
+        var studentEntities = studentManager.findAllByIsDeleted();
         return studentMapper.toStudentDTOList(studentEntities);
     }
 
     public StudentDTO findById(Long id) {
-        var student = studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("student not found : " + id));
+        var student = studentManager.findByIdAndIsDeleted(id).orElseThrow(() -> new StudentNotFoundException("student not found : " + id));
         return studentMapper.toStudentDTO(student);
     }
 
