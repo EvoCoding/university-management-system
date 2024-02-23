@@ -5,7 +5,6 @@ import org.example.universitymanagementsystem.dto.CreateDepartmentDTO;
 import org.example.universitymanagementsystem.dto.DepartmentDTO;
 import org.example.universitymanagementsystem.dto.DepartmentDetailsDTO;
 import org.example.universitymanagementsystem.dto.UpdateDepartmentDto;
-import org.example.universitymanagementsystem.exception.DepartmentNotFoundException;
 import org.example.universitymanagementsystem.manager.DepartmentManager;
 import org.example.universitymanagementsystem.mapper.DepartmentMapper;
 import org.example.universitymanagementsystem.repository.DepartmentRepository;
@@ -26,7 +25,6 @@ public class DepartmentService {
     }
 
     public DepartmentDetailsDTO findById(Long id) {
-        var departmentEntity = departmentManager.findByIdAndIsDeleted(id).orElseThrow(() -> new DepartmentNotFoundException("Department not found : " + id));
         return departmentMapper.toDepartmentDetailsDTO(departmentManager.getDepartment(id));
     }
 
@@ -46,5 +44,4 @@ public class DepartmentService {
         department.setDeleted(true);
         departmentRepository.save(department);
     }
-
 }

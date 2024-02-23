@@ -23,7 +23,6 @@ public class StudentManager {
         return studentRepository.findAllByIsDeleted(false);
     }
 
-
     public Optional<StudentEntity> findByIdAndIsDeleted(Long id) {
         return studentRepository.findByIdAndIsDeleted(id, false);
     }

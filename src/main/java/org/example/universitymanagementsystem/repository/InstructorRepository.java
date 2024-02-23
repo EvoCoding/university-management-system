@@ -1,7 +1,6 @@
 package org.example.universitymanagementsystem.repository;
 
 import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
-;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

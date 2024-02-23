@@ -30,10 +30,10 @@ public class CourseService {
     }
 
     public CourseDTO findById(@PathVariable Long id) {
-        var course = courseManager.findByIdAndIsDeleted(id).orElseThrow(() -> new CourseNotFoundException("Course not found : " + id));
+        var course = courseManager.findByIdAndIsDeleted(id)
+                .orElseThrow(() -> new CourseNotFoundException("Course not found : " + id));
         return courseMapper.toCourseDTO(course);
     }
-
 
     public void create(CreateCourseDTO createCourseDTO) {
         courseRepository.save(courseMapper.toCourseEntity(createCourseDTO));

@@ -8,10 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CourseRepository extends JpaRepository<CourseEntity,Long> {
+public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
 
     List<CourseEntity> findAllByIsDeleted(boolean isDeleted);
 
     Optional<CourseEntity> findByIdAndIsDeleted(Long id, boolean isDeleted);
-
 }

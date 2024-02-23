@@ -15,13 +15,15 @@ public class DepartmentManager {
     private final DepartmentRepository departmentRepository;
 
     public DepartmentEntity getDepartment(Long id) {
-        return departmentRepository.findById(id).orElseThrow(() -> new DepartmentNotFoundException("Department not found with id:" + id));
+        return departmentRepository.findById(id)
+                .orElseThrow(() -> new DepartmentNotFoundException("Department not found with id:" + id));
     }
 
     public List<DepartmentEntity> findAllByIsDeleted() {
         return departmentRepository.findAllByIsDeleted(false);
     }
-    public Optional<DepartmentEntity> findByIdAndIsDeleted(Long id){
-        return  departmentRepository.findByIdAndIsDeleted(id,false);
+
+    public Optional<DepartmentEntity> findByIdAndIsDeleted(Long id) {
+        return departmentRepository.findByIdAndIsDeleted(id, false);
     }
 }
