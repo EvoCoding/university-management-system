@@ -19,10 +19,9 @@ public class InstructorService {
     private final InstructorRepository instructorRepository;
     private final InstructorMapper instructorMapper;
     private final InstructorManager instructorManager;
-    private final CourseManager courseManager;
 
     public List<InstructorDTO> findAll() {
-        var instructorEntities = instructorManager.findAll();
+        var instructorEntities = instructorManager.findAllByIsDeleted();
         return instructorMapper.toInstructorDTOList(instructorEntities);
     }
 

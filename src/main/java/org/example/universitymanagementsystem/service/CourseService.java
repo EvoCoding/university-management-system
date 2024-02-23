@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.CourseDTO;
 import org.example.universitymanagementsystem.dto.CreateCourseDTO;
 import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
+import org.example.universitymanagementsystem.exception.CourseNotFoundException;
 import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.CourseMapper;
@@ -24,12 +25,13 @@ public class CourseService {
     private final InstructorManager instructorManager;
 
     public List<CourseDTO> findAll() {
-        var courseEntities = courseManager.findAll();
+        var courseEntities = courseManager.findAllByIsDeleted();
         return courseMapper.toCourseDTOList(courseEntities);
     }
 
     public CourseDTO findById(@PathVariable Long id) {
-        var course = courseManager.getCourse(id);
+        var course = courseManager.findByIdAndIsDeleted(id)
+                .orElseThrow(() -> new CourseNotFoundException("Course not found : " + id));
         return courseMapper.toCourseDTO(course);
     }
 

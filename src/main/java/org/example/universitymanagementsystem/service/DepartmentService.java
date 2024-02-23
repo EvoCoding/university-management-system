@@ -20,7 +20,7 @@ public class DepartmentService {
     private final DepartmentManager departmentManager;
 
     public List<DepartmentDTO> findAll() {
-        var departmentEntities = departmentManager.findAll();
+        var departmentEntities = departmentManager.findAllByIsDeleted();
         return departmentMapper.toDepartmentDTOList(departmentEntities);
     }
 
@@ -44,5 +44,4 @@ public class DepartmentService {
         department.setDeleted(true);
         departmentRepository.save(department);
     }
-
 }
