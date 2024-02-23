@@ -1,12 +1,12 @@
 package org.example.universitymanagementsystem.manager;
 
 import lombok.AllArgsConstructor;
+import org.example.universitymanagementsystem.annotation.Manager;
 import org.example.universitymanagementsystem.exception.LessonNotFoundException;
 import org.example.universitymanagementsystem.repository.LessonRepository;
 import org.example.universitymanagementsystem.repository.entity.LessonEntity;
-import org.springframework.stereotype.Component;
 
-@Component
+@Manager
 @AllArgsConstructor
 public class LessonManager {
     private final LessonRepository lessonRepository;

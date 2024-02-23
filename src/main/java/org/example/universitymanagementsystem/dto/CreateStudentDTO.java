@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.universitymanagementsystem.annotation.NullOrNotBlank;
+import org.example.universitymanagementsystem.annotation.validator.NullOrNotBlank;
 
 @Setter
 @Getter

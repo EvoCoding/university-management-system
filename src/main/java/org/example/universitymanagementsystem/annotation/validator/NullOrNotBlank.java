@@ -1,8 +1,7 @@
-package org.example.universitymanagementsystem.annotation;
+package org.example.universitymanagementsystem.annotation.validator;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import org.example.universitymanagementsystem.annotation.validator.NullOrNotBlankValidator;
 
 import java.lang.annotation.*;
 

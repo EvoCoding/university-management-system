@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/api/v1/students")
 @RequiredArgsConstructor
 public class StudentController {
-
     private final StudentService studentService;
 
     @GetMapping
@@ -46,5 +45,4 @@ public class StudentController {
         studentService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
 }
