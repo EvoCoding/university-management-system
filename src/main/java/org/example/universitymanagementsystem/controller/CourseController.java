@@ -6,11 +6,11 @@ import org.example.universitymanagementsystem.dto.CourseDTO;
 import org.example.universitymanagementsystem.dto.CreateCourseDTO;
 import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
 import org.example.universitymanagementsystem.service.CourseService;
+import org.example.universitymanagementsystem.shared.PageRequest;
+import org.example.universitymanagementsystem.shared.PageResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -19,8 +19,8 @@ public class CourseController {
     private final CourseService courseService;
 
     @GetMapping
-    public ResponseEntity<List<CourseDTO>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll());
+    public ResponseEntity<PageResponse<CourseDTO>> findAll(PageRequest pageRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(pageRequest));
     }
 
     @GetMapping("/{id}")

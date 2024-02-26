@@ -9,11 +9,11 @@ import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.CourseMapper;
 import org.example.universitymanagementsystem.repository.CourseRepository;
+import org.example.universitymanagementsystem.shared.PageRequest;
+import org.example.universitymanagementsystem.shared.PageResponse;
 import org.example.universitymanagementsystem.validator.CourseValidator;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,9 +24,10 @@ public class CourseService {
     private final CourseValidator courseValidator;
     private final InstructorManager instructorManager;
 
-    public List<CourseDTO> findAll() {
-        var courseEntities = courseManager.findAllByIsDeleted();
-        return courseMapper.toCourseDTOList(courseEntities);
+    public PageResponse<CourseDTO> findAll(PageRequest pageRequest) {
+        var courseEntities = courseManager.findAllByIsDeleted(pageRequest.getPage(), pageRequest.getSize());
+        var content = courseMapper.toCourseDTOList(courseEntities.getContent());
+        return new PageResponse<>(content, courseEntities.getTotalPages(), courseEntities.getTotalElements());
     }
 
     public CourseDTO findById(@PathVariable Long id) {
