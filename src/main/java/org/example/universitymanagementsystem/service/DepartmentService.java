@@ -8,6 +8,8 @@ import org.example.universitymanagementsystem.dto.UpdateDepartmentDto;
 import org.example.universitymanagementsystem.manager.DepartmentManager;
 import org.example.universitymanagementsystem.mapper.DepartmentMapper;
 import org.example.universitymanagementsystem.repository.DepartmentRepository;
+import org.example.universitymanagementsystem.shared.PageRequest;
+import org.example.universitymanagementsystem.shared.PageResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,9 +21,10 @@ public class DepartmentService {
     private final DepartmentMapper departmentMapper;
     private final DepartmentManager departmentManager;
 
-    public List<DepartmentDTO> findAll() {
-        var departmentEntities = departmentManager.findAllByIsDeleted();
-        return departmentMapper.toDepartmentDTOList(departmentEntities);
+    public PageResponse<DepartmentDTO> findAll(PageRequest pageRequest) {
+        var departmentEntities = departmentManager.findAllByIsDeleted(pageRequest.getPage(), pageRequest.getSize());
+        var content = departmentMapper.toDepartmentDTOList(departmentEntities.getContent());
+        return new PageResponse<>(content, departmentEntities.getTotalPages(), departmentEntities.getTotalElements());
     }
 
     public DepartmentDetailsDTO findById(Long id) {

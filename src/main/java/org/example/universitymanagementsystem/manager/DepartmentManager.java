@@ -5,6 +5,8 @@ import org.example.universitymanagementsystem.annotation.Manager;
 import org.example.universitymanagementsystem.exception.DepartmentNotFoundException;
 import org.example.universitymanagementsystem.repository.DepartmentRepository;
 import org.example.universitymanagementsystem.repository.entity.DepartmentEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -18,7 +20,8 @@ public class DepartmentManager {
                 .orElseThrow(() -> new DepartmentNotFoundException("Department not found with id:" + id));
     }
 
-    public List<DepartmentEntity> findAllByIsDeleted() {
-        return departmentRepository.findAllByIsDeleted(false);
+    public Page<DepartmentEntity> findAllByIsDeleted(int page, int size) {
+        var pageable = PageRequest.of(page, size);
+        return departmentRepository.findAllByIsDeleted(false, pageable);
     }
 }
