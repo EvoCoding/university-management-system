@@ -1,7 +1,7 @@
 package org.example.universitymanagementsystem.validator;
 
 import org.example.universitymanagementsystem.annotation.Validator;
-import org.example.universitymanagementsystem.exception.LessonValidationException;
+import org.example.universitymanagementsystem.exception.lesson.LessonValidationException;
 import org.example.universitymanagementsystem.repository.entity.LessonEntity;
 
 import java.time.temporal.ChronoUnit;

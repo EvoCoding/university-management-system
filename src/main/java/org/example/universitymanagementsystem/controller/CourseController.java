@@ -2,9 +2,9 @@ package org.example.universitymanagementsystem.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CourseDTO;
-import org.example.universitymanagementsystem.dto.CreateCourseDTO;
-import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
+import org.example.universitymanagementsystem.dto.course.CourseDTO;
+import org.example.universitymanagementsystem.dto.course.CreateCourseDTO;
+import org.example.universitymanagementsystem.dto.course.UpdateCourseDTO;
 import org.example.universitymanagementsystem.service.CourseService;
 import org.example.universitymanagementsystem.shared.PageRequest;
 import org.example.universitymanagementsystem.shared.PageResponse;

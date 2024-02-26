@@ -2,7 +2,7 @@ package org.example.universitymanagementsystem.manager;
 
 import lombok.AllArgsConstructor;
 import org.example.universitymanagementsystem.annotation.Manager;
-import org.example.universitymanagementsystem.exception.AttendanceNotFoundException;
+import org.example.universitymanagementsystem.exception.attendance.AttendanceNotFoundException;
 import org.example.universitymanagementsystem.repository.AttendanceRepository;
 import org.example.universitymanagementsystem.repository.entity.AttendanceEntity;
 

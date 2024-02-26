@@ -2,7 +2,7 @@ package org.example.universitymanagementsystem.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CreateGradeDTO;
+import org.example.universitymanagementsystem.dto.grade.CreateGradeDTO;
 import org.example.universitymanagementsystem.service.GradeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

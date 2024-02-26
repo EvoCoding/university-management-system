@@ -1,10 +1,10 @@
 package org.example.universitymanagementsystem.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CreateDepartmentDTO;
-import org.example.universitymanagementsystem.dto.DepartmentDTO;
-import org.example.universitymanagementsystem.dto.DepartmentDetailsDTO;
-import org.example.universitymanagementsystem.dto.UpdateDepartmentDto;
+import org.example.universitymanagementsystem.dto.department.CreateDepartmentDTO;
+import org.example.universitymanagementsystem.dto.department.DepartmentDTO;
+import org.example.universitymanagementsystem.dto.department.DepartmentDetailsDTO;
+import org.example.universitymanagementsystem.dto.department.UpdateDepartmentDto;
 import org.example.universitymanagementsystem.manager.DepartmentManager;
 import org.example.universitymanagementsystem.mapper.DepartmentMapper;
 import org.example.universitymanagementsystem.repository.DepartmentRepository;

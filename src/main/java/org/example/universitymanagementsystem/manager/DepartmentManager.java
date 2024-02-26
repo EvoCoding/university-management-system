@@ -2,7 +2,7 @@ package org.example.universitymanagementsystem.manager;
 
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.annotation.Manager;
-import org.example.universitymanagementsystem.exception.DepartmentNotFoundException;
+import org.example.universitymanagementsystem.exception.department.DepartmentNotFoundException;
 import org.example.universitymanagementsystem.repository.DepartmentRepository;
 import org.example.universitymanagementsystem.repository.entity.DepartmentEntity;
 

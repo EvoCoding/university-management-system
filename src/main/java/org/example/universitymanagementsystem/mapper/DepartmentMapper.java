@@ -1,9 +1,9 @@
 package org.example.universitymanagementsystem.mapper;
 
-import org.example.universitymanagementsystem.dto.CreateDepartmentDTO;
-import org.example.universitymanagementsystem.dto.DepartmentDTO;
-import org.example.universitymanagementsystem.dto.DepartmentDetailsDTO;
-import org.example.universitymanagementsystem.dto.UpdateDepartmentDto;
+import org.example.universitymanagementsystem.dto.department.CreateDepartmentDTO;
+import org.example.universitymanagementsystem.dto.department.DepartmentDTO;
+import org.example.universitymanagementsystem.dto.department.DepartmentDetailsDTO;
+import org.example.universitymanagementsystem.dto.department.UpdateDepartmentDto;
 import org.example.universitymanagementsystem.repository.entity.DepartmentEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

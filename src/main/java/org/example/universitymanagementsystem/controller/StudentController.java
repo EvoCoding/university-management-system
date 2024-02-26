@@ -2,9 +2,9 @@ package org.example.universitymanagementsystem.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CreateStudentDTO;
-import org.example.universitymanagementsystem.dto.StudentDTO;
-import org.example.universitymanagementsystem.dto.UpdateStudentDTO;
+import org.example.universitymanagementsystem.dto.student.CreateStudentDTO;
+import org.example.universitymanagementsystem.dto.student.StudentDTO;
+import org.example.universitymanagementsystem.dto.student.UpdateStudentDTO;
 import org.example.universitymanagementsystem.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

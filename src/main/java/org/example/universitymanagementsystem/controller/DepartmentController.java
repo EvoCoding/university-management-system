@@ -2,10 +2,10 @@ package org.example.universitymanagementsystem.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CreateDepartmentDTO;
-import org.example.universitymanagementsystem.dto.DepartmentDTO;
-import org.example.universitymanagementsystem.dto.DepartmentDetailsDTO;
-import org.example.universitymanagementsystem.dto.UpdateDepartmentDto;
+import org.example.universitymanagementsystem.dto.department.CreateDepartmentDTO;
+import org.example.universitymanagementsystem.dto.department.DepartmentDTO;
+import org.example.universitymanagementsystem.dto.department.DepartmentDetailsDTO;
+import org.example.universitymanagementsystem.dto.department.UpdateDepartmentDto;
 import org.example.universitymanagementsystem.service.DepartmentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

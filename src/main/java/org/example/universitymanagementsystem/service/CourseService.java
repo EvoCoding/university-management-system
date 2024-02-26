@@ -1,9 +1,9 @@
 package org.example.universitymanagementsystem.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CourseDTO;
-import org.example.universitymanagementsystem.dto.CreateCourseDTO;
-import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
+import org.example.universitymanagementsystem.dto.course.CourseDTO;
+import org.example.universitymanagementsystem.dto.course.CreateCourseDTO;
+import org.example.universitymanagementsystem.dto.course.UpdateCourseDTO;
 import org.example.universitymanagementsystem.exception.CourseNotFoundException;
 import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.InstructorManager;

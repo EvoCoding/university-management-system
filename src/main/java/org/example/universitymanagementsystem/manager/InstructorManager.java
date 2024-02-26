@@ -2,7 +2,7 @@ package org.example.universitymanagementsystem.manager;
 
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.annotation.Manager;
-import org.example.universitymanagementsystem.exception.InstructorNotFoundException;
+import org.example.universitymanagementsystem.exception.instructor.InstructorNotFoundException;
 import org.example.universitymanagementsystem.repository.InstructorRepository;
 import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
 

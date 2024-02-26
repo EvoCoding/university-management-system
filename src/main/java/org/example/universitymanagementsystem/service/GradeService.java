@@ -1,7 +1,7 @@
 package org.example.universitymanagementsystem.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CreateGradeDTO;
+import org.example.universitymanagementsystem.dto.grade.CreateGradeDTO;
 import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.manager.StudentManager;

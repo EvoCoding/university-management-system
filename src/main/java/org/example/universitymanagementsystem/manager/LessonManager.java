@@ -2,7 +2,7 @@ package org.example.universitymanagementsystem.manager;
 
 import lombok.AllArgsConstructor;
 import org.example.universitymanagementsystem.annotation.Manager;
-import org.example.universitymanagementsystem.exception.LessonNotFoundException;
+import org.example.universitymanagementsystem.exception.lesson.LessonNotFoundException;
 import org.example.universitymanagementsystem.repository.LessonRepository;
 import org.example.universitymanagementsystem.repository.entity.LessonEntity;
 
