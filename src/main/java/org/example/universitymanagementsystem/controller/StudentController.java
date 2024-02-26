@@ -6,6 +6,9 @@ import org.example.universitymanagementsystem.dto.CreateStudentDTO;
 import org.example.universitymanagementsystem.dto.StudentDTO;
 import org.example.universitymanagementsystem.dto.UpdateStudentDTO;
 import org.example.universitymanagementsystem.service.StudentService;
+import org.example.universitymanagementsystem.shared.PageRequest;
+import org.example.universitymanagementsystem.shared.PageResponse;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +22,8 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping
-    public ResponseEntity<List<StudentDTO>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(studentService.findAll());
+    public ResponseEntity<PageResponse<StudentDTO>> findAll(PageRequest pageRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(studentService.findAll(pageRequest));
     }
 
     @GetMapping("/{id}")

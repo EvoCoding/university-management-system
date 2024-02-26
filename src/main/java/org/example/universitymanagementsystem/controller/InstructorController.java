@@ -4,6 +4,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.*;
 import org.example.universitymanagementsystem.service.InstructorService;
+import org.example.universitymanagementsystem.shared.PageRequest;
+import org.example.universitymanagementsystem.shared.PageResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +19,8 @@ public class InstructorController {
     private final InstructorService instructorService;
 
     @GetMapping
-    public ResponseEntity<List<InstructorDTO>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(instructorService.findAll());
+    public ResponseEntity<PageResponse<InstructorDTO>> findAll(PageRequest pageRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(instructorService.findAll(pageRequest));
     }
 
     @GetMapping("/{id}")

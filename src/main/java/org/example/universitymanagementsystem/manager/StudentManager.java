@@ -5,6 +5,8 @@ import org.example.universitymanagementsystem.annotation.Manager;
 import org.example.universitymanagementsystem.exception.StudentNotFoundException;
 import org.example.universitymanagementsystem.repository.StudentRepository;
 import org.example.universitymanagementsystem.repository.entity.StudentEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -18,8 +20,9 @@ public class StudentManager {
                 .orElseThrow(() -> new StudentNotFoundException("student not found : " + id));
     }
 
-    public List<StudentEntity> findAllByIsDeleted() {
-        return studentRepository.findAllByIsDeleted(false);
+    public Page<StudentEntity> findAllByIsDeleted( int page,int size) {
+        var pageable= PageRequest.of(page,size);
+        return studentRepository.findAllByIsDeleted(false,pageable);
     }
 }
 

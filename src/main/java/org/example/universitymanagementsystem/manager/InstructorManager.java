@@ -5,6 +5,8 @@ import org.example.universitymanagementsystem.annotation.Manager;
 import org.example.universitymanagementsystem.exception.InstructorNotFoundException;
 import org.example.universitymanagementsystem.repository.InstructorRepository;
 import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -18,8 +20,9 @@ public class InstructorManager {
                 .orElseThrow(() -> new InstructorNotFoundException("Instructor not found with id:" + id));
     }
 
-    public List<InstructorEntity> findAllByIsDeleted() {
-        return instructorRepository.findAllByIsDeleted(false);
+    public Page<InstructorEntity> findAllByIsDeleted(int page ,int size) {
+        var pageable= PageRequest.of(page,size);
+        return instructorRepository.findAllByIsDeleted(false, pageable);
     }
 
 }

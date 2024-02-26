@@ -7,6 +7,8 @@ import org.example.universitymanagementsystem.dto.UpdateStudentDTO;
 import org.example.universitymanagementsystem.manager.StudentManager;
 import org.example.universitymanagementsystem.mapper.StudentMapper;
 import org.example.universitymanagementsystem.repository.StudentRepository;
+import org.example.universitymanagementsystem.shared.PageRequest;
+import org.example.universitymanagementsystem.shared.PageResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,9 +20,10 @@ public class StudentService {
     private final StudentMapper studentMapper;
     private final StudentManager studentManager;
 
-    public List<StudentDTO> findAll() {
-        var studentEntities = studentManager.findAllByIsDeleted();
-        return studentMapper.toStudentDTOList(studentEntities);
+    public PageResponse<StudentDTO> findAll(PageRequest pageRequest) {
+        var studentEntities = studentManager.findAllByIsDeleted(pageRequest.getSize(),pageRequest.getPage());
+        var content = studentMapper.toStudentDTOList(studentEntities.getContent());
+        return new PageResponse<>(content,studentEntities.getTotalPages(),studentEntities.getTotalElements());
     }
 
     public StudentDTO findById(Long id) {
