@@ -3,6 +3,7 @@ package org.example.universitymanagementsystem.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.CreateStudentDTO;
+import org.example.universitymanagementsystem.dto.FindStudentsDTO;
 import org.example.universitymanagementsystem.dto.StudentDTO;
 import org.example.universitymanagementsystem.dto.UpdateStudentDTO;
 import org.example.universitymanagementsystem.service.StudentService;
@@ -22,8 +23,8 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping
-    public ResponseEntity<PageResponse<StudentDTO>> findAll(PageRequest pageRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(studentService.findAll(pageRequest));
+    public ResponseEntity<PageResponse<StudentDTO>> findAll(FindStudentsDTO findStudentsDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(studentService.findAll(findStudentsDTO));
     }
 
     @GetMapping("/{id}")

@@ -1,9 +1,11 @@
 package org.example.universitymanagementsystem.mapper;
 
 import org.example.universitymanagementsystem.dto.CreateStudentDTO;
+import org.example.universitymanagementsystem.dto.FindStudentsDTO;
 import org.example.universitymanagementsystem.dto.StudentDTO;
 import org.example.universitymanagementsystem.dto.UpdateStudentDTO;
 import org.example.universitymanagementsystem.repository.entity.StudentEntity;
+import org.example.universitymanagementsystem.repository.vo.FindStudentsVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
@@ -15,4 +17,5 @@ public interface StudentMapper {
     StudentEntity toStudentEntity(CreateStudentDTO createStudentDTO);
     StudentDTO toStudentDTO(StudentEntity studentEntity);
     void toStudentEntity(UpdateStudentDTO updateStudentDTO, @MappingTarget StudentEntity studentEntity);
+    FindStudentsVo toFindStudentsVo(FindStudentsDTO findStudentsDTO);
 }

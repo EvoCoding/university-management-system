@@ -38,4 +38,8 @@ public class StudentEntity {
             uniqueConstraints = @UniqueConstraint(name="unique_student_and_course",columnNames = {"student_id","course_id"})
     )
     private List<CourseEntity> courses;
+
+    @OneToOne
+    @JoinColumn(name="student_profile_id")
+    private StudentProfileEntity studentProfileEntity;
 }
