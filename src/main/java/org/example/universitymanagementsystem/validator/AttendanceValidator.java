@@ -2,7 +2,7 @@ package org.example.universitymanagementsystem.validator;
 
 import lombok.AllArgsConstructor;
 import org.example.universitymanagementsystem.annotation.Validator;
-import org.example.universitymanagementsystem.exception.attendance.AttendanceValidateException;
+import org.example.universitymanagementsystem.exception.AttendanceValidateException;
 import org.example.universitymanagementsystem.repository.AttendanceRepository;
 import org.example.universitymanagementsystem.repository.entity.AttendanceEntity;
 

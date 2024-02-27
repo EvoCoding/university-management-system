@@ -1,8 +1,8 @@
 package org.example.universitymanagementsystem.service;
 
 import lombok.AllArgsConstructor;
-import org.example.universitymanagementsystem.dto.attendance.CreateLessonAttendanceDTO;
-import org.example.universitymanagementsystem.dto.attendance.UpdateAttendanceDTO;
+import org.example.universitymanagementsystem.dto.CreateLessonAttendanceDTO;
+import org.example.universitymanagementsystem.dto.UpdateAttendanceDTO;
 import org.example.universitymanagementsystem.manager.AttendanceManager;
 import org.example.universitymanagementsystem.manager.LessonManager;
 import org.example.universitymanagementsystem.manager.StudentManager;

@@ -2,7 +2,7 @@ package org.example.universitymanagementsystem.manager;
 
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.annotation.Manager;
-import org.example.universitymanagementsystem.exception.course.CourseNotFoundException;
+import org.example.universitymanagementsystem.exception.CourseNotFoundException;
 import org.example.universitymanagementsystem.repository.CourseRepository;
 import org.example.universitymanagementsystem.repository.entity.CourseEntity;
 import org.springframework.data.domain.Page;

@@ -1,8 +1,8 @@
 package org.example.universitymanagementsystem.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.universitymanagementsystem.dto.attendance.CreateLessonAttendanceDTO;
-import org.example.universitymanagementsystem.dto.attendance.UpdateAttendanceDTO;
+import org.example.universitymanagementsystem.dto.CreateLessonAttendanceDTO;
+import org.example.universitymanagementsystem.dto.UpdateAttendanceDTO;
 import org.example.universitymanagementsystem.service.AttendanceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

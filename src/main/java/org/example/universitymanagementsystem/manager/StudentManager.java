@@ -2,11 +2,13 @@ package org.example.universitymanagementsystem.manager;
 
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.annotation.Manager;
-import org.example.universitymanagementsystem.exception.student.StudentNotFoundException;
+import org.example.universitymanagementsystem.exception.StudentNotFoundException;
 import org.example.universitymanagementsystem.repository.StudentRepository;
 import org.example.universitymanagementsystem.repository.entity.StudentEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
+import java.util.List;
 
 @Manager
 @RequiredArgsConstructor

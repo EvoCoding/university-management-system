@@ -2,15 +2,18 @@ package org.example.universitymanagementsystem.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.student.CreateStudentDTO;
-import org.example.universitymanagementsystem.dto.student.StudentDTO;
-import org.example.universitymanagementsystem.dto.student.UpdateStudentDTO;
+import org.example.universitymanagementsystem.dto.CreateStudentDTO;
+import org.example.universitymanagementsystem.dto.StudentDTO;
+import org.example.universitymanagementsystem.dto.UpdateStudentDTO;
 import org.example.universitymanagementsystem.service.StudentService;
 import org.example.universitymanagementsystem.shared.PageRequest;
 import org.example.universitymanagementsystem.shared.PageResponse;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/students")

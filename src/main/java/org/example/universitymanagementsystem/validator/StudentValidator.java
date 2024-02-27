@@ -1,7 +1,7 @@
 package org.example.universitymanagementsystem.validator;
 
 import org.example.universitymanagementsystem.annotation.Validator;
-import org.example.universitymanagementsystem.exception.student.StudentValidationException;
+import org.example.universitymanagementsystem.exception.StudentValidationException;
 import org.example.universitymanagementsystem.repository.entity.CourseEntity;
 import org.example.universitymanagementsystem.repository.entity.StudentEntity;
 
