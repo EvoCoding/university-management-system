@@ -1,8 +1,8 @@
 package org.example.universitymanagementsystem.mapper;
 
-import org.example.universitymanagementsystem.dto.CourseDTO;
-import org.example.universitymanagementsystem.dto.CreateCourseDTO;
-import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
+import org.example.universitymanagementsystem.dto.course.CourseDTO;
+import org.example.universitymanagementsystem.dto.course.CreateCourseDTO;
+import org.example.universitymanagementsystem.dto.course.UpdateCourseDTO;
 import org.example.universitymanagementsystem.repository.entity.CourseEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

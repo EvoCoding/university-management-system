@@ -1,0 +1,16 @@
+package org.example.universitymanagementsystem.dto.instructor;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.Instant;
+
+@Getter
+@Setter
+public class InstructorDTO {
+    private Long id;
+    private String name;
+    private String experience;
+    private Instant createdAt;
+    private Instant modifiedAt;
+}

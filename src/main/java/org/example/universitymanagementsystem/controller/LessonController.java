@@ -1,7 +1,7 @@
 package org.example.universitymanagementsystem.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CreateLessonDTO;
+import org.example.universitymanagementsystem.dto.lesson.CreateLessonDTO;
 import org.example.universitymanagementsystem.service.LessonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

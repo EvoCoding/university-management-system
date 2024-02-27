@@ -1,18 +1,16 @@
 package org.example.universitymanagementsystem.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CreateInstructorDTO;
-import org.example.universitymanagementsystem.dto.InstructorDTO;
-import org.example.universitymanagementsystem.dto.InstructorDetailsDTO;
-import org.example.universitymanagementsystem.dto.UpdateInstructorDTO;
+import org.example.universitymanagementsystem.dto.instructor.CreateInstructorDTO;
+import org.example.universitymanagementsystem.dto.instructor.InstructorDTO;
+import org.example.universitymanagementsystem.dto.instructor.InstructorDetailsDTO;
+import org.example.universitymanagementsystem.dto.instructor.UpdateInstructorDTO;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.InstructorMapper;
 import org.example.universitymanagementsystem.repository.InstructorRepository;
 import org.example.universitymanagementsystem.shared.PageRequest;
 import org.example.universitymanagementsystem.shared.PageResponse;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
