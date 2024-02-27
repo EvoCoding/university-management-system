@@ -29,7 +29,5 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
             " AND (student.isDeleted = FALSE) AND (course.isDeleted = FALSE) ORDER BY student.id DESC")
     Page<StudentEntity> findAll(FindStudentsVo findStudentsVo, PageRequest pageable);
 
-
-
 }
 
