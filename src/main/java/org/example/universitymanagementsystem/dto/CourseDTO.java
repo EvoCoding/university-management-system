@@ -15,5 +15,4 @@ public class CourseDTO {
     private int credit;
     private Instant createdAt;
     private Instant modifiedAt;
-
 }

@@ -2,7 +2,9 @@ package org.example.universitymanagementsystem.manager;
 
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.annotation.Manager;
+import org.example.universitymanagementsystem.dto.FindCoursesDTO;
 import org.example.universitymanagementsystem.exception.CourseNotFoundException;
+import org.example.universitymanagementsystem.mapper.CourseMapper;
 import org.example.universitymanagementsystem.repository.CourseRepository;
 import org.example.universitymanagementsystem.repository.entity.CourseEntity;
 import org.springframework.data.domain.Page;
@@ -14,19 +16,20 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CourseManager {
     private final CourseRepository courseRepository;
+    private final CourseMapper courseMapper;
 
     public CourseEntity getCourse(Long id) {
         return courseRepository.findById(id)
                 .orElseThrow(() -> new CourseNotFoundException("Course Not Found: " + id));
     }
 
-    public Page<CourseEntity> findAllByIsDeleted(int page, int size) {
-        var pageable = PageRequest.of(page, size);
-        return courseRepository.findAllByIsDeleted(false, pageable);
-    }
-
     public Optional<CourseEntity> findByIdAndIsDeleted(Long id) {
         return courseRepository.findByIdAndIsDeleted(id, false);
     }
 
+    public Page<CourseEntity> findAll(FindCoursesDTO findCoursesDTO) {
+        var pageable = PageRequest.of(findCoursesDTO.getPage(), findCoursesDTO.getSize());
+        var findCoursesVo = courseMapper.toFindCoursesVo(findCoursesDTO);
+        return courseRepository.findAll(findCoursesVo, pageable);
+    }
 }

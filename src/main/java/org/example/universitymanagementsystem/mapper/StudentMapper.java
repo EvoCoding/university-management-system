@@ -23,6 +23,9 @@ public interface StudentMapper {
     void toStudentEntity(UpdateStudentDTO updateStudentDTO, @MappingTarget StudentEntity studentEntity);
 
     @Mapping(target = "namePhrase", expression = "java(trimToNull(findStudentsDTO.getNamePhrase()))")
+    @Mapping(target = "emailPhrase", expression = "java(trimToNull(findStudentsDTO.getEmailPhrase()))")
+    @Mapping(target = "addressPhrase", expression = "java(trimToNull(findStudentsDTO.getAddressPhrase()))")
+    @Mapping(target = "phoneNumberPhrase", expression = "java(trimToNull(findStudentsDTO.getPhoneNumberPhrase()))")
     FindStudentsVo toFindStudentsVo(FindStudentsDTO findStudentsDTO);
 
     default String trimToNull(String value) {

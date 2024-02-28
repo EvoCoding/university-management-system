@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.CourseDTO;
 import org.example.universitymanagementsystem.dto.CreateCourseDTO;
+import org.example.universitymanagementsystem.dto.FindCoursesDTO;
 import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
 import org.example.universitymanagementsystem.service.CourseService;
 import org.example.universitymanagementsystem.shared.PageRequest;
@@ -19,8 +20,8 @@ public class CourseController {
     private final CourseService courseService;
 
     @GetMapping
-    public ResponseEntity<PageResponse<CourseDTO>> findAll(PageRequest pageRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(pageRequest));
+    public ResponseEntity<PageResponse<CourseDTO>> findAll(FindCoursesDTO findCoursesDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(findCoursesDTO));
     }
 
     @GetMapping("/{id}")

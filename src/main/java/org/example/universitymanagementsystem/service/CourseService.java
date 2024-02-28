@@ -3,6 +3,7 @@ package org.example.universitymanagementsystem.service;
 import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.CourseDTO;
 import org.example.universitymanagementsystem.dto.CreateCourseDTO;
+import org.example.universitymanagementsystem.dto.FindCoursesDTO;
 import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
 import org.example.universitymanagementsystem.exception.CourseNotFoundException;
 import org.example.universitymanagementsystem.manager.CourseManager;
@@ -24,8 +25,8 @@ public class CourseService {
     private final CourseValidator courseValidator;
     private final InstructorManager instructorManager;
 
-    public PageResponse<CourseDTO> findAll(PageRequest pageRequest) {
-        var courseEntities = courseManager.findAllByIsDeleted(pageRequest.getPage(), pageRequest.getSize());
+    public PageResponse<CourseDTO> findAll(FindCoursesDTO findCoursesDTO) {
+        var courseEntities = courseManager.findAll(findCoursesDTO);
         var content = courseMapper.toCourseDTOList(courseEntities.getContent());
         return new PageResponse<>(content, courseEntities.getTotalPages(), courseEntities.getTotalElements());
     }
