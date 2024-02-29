@@ -37,4 +37,8 @@ public class InstructorEntity {
     @ManyToOne
     @JoinColumn(name="department_id")
     private DepartmentEntity department;
+
+    @OneToOne
+    @JoinColumn(name="instructor_profile_id")
+    private InstructorProfileEntity instructorProfileEntity;
 }

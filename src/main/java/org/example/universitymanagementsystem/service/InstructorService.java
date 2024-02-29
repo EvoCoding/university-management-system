@@ -1,18 +1,12 @@
 package org.example.universitymanagementsystem.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CreateInstructorDTO;
-import org.example.universitymanagementsystem.dto.InstructorDTO;
-import org.example.universitymanagementsystem.dto.InstructorDetailsDTO;
-import org.example.universitymanagementsystem.dto.UpdateInstructorDTO;
+import org.example.universitymanagementsystem.dto.*;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.InstructorMapper;
 import org.example.universitymanagementsystem.repository.InstructorRepository;
-import org.example.universitymanagementsystem.shared.PageRequest;
 import org.example.universitymanagementsystem.shared.PageResponse;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,8 +15,8 @@ public class InstructorService {
     private final InstructorMapper instructorMapper;
     private final InstructorManager instructorManager;
 
-    public PageResponse<InstructorDTO> findAll(PageRequest pageRequest) {
-        var instructorEntities = instructorManager.findAllByIsDeleted(pageRequest.getSize(), pageRequest.getPage());
+    public PageResponse<InstructorDTO> findAll(FindInstructorsDTO findInstructorsDTO) {
+        var instructorEntities = instructorManager.findAll(findInstructorsDTO);
         var content=instructorMapper.toInstructorDTOList(instructorEntities.getContent());
         return new PageResponse<>(content ,instructorEntities.getTotalPages(),instructorEntities.getTotalElements());
     }

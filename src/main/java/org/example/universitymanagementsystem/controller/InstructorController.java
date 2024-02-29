@@ -19,8 +19,8 @@ public class InstructorController {
     private final InstructorService instructorService;
 
     @GetMapping
-    public ResponseEntity<PageResponse<InstructorDTO>> findAll(PageRequest pageRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(instructorService.findAll(pageRequest));
+    public ResponseEntity<PageResponse<InstructorDTO>> findAll(FindInstructorsDTO findInstructorsDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(instructorService.findAll(findInstructorsDTO));
     }
 
     @GetMapping("/{id}")
