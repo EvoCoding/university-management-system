@@ -2,18 +2,12 @@ package org.example.universitymanagementsystem.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.universitymanagementsystem.dto.CreateDepartmentDTO;
-import org.example.universitymanagementsystem.dto.DepartmentDTO;
-import org.example.universitymanagementsystem.dto.DepartmentDetailsDTO;
-import org.example.universitymanagementsystem.dto.UpdateDepartmentDto;
+import org.example.universitymanagementsystem.dto.*;
 import org.example.universitymanagementsystem.service.DepartmentService;
-import org.example.universitymanagementsystem.shared.PageRequest;
 import org.example.universitymanagementsystem.shared.PageResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/departments")
@@ -22,8 +16,8 @@ public class DepartmentController {
     private final DepartmentService departmentService;
 
     @GetMapping
-    public ResponseEntity<PageResponse<DepartmentDTO>> findAll(PageRequest pageRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(departmentService.findAll(pageRequest));
+    public ResponseEntity<PageResponse<DepartmentDTO>> findAll(FindDepartmentsDTO findDepartmentsDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(departmentService.findAll(findDepartmentsDTO));
     }
 
     @GetMapping("/{id}")

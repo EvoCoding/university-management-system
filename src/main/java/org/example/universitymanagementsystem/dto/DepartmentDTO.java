@@ -11,6 +11,7 @@ public class DepartmentDTO {
     private Long id;
     private String name;
     private String code;
+    private Long capacity;
     private Instant createdAt;
     private Instant modifiedAt;
 }
