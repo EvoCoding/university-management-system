@@ -5,13 +5,14 @@ import org.example.universitymanagementsystem.repository.vo.FindStudentsVo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
+public interface StudentRepository extends JpaRepository<StudentEntity, Long>, JpaSpecificationExecutor<StudentEntity> {
 
     Optional<StudentEntity> findByIdAndIsDeleted(Long id, boolean isDeleted);
 
