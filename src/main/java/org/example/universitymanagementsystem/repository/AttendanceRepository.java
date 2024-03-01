@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface AttendanceRepository extends JpaRepository<AttendanceEntity,Long> {
+public interface AttendanceRepository extends JpaRepository<AttendanceEntity, Long> {
     Optional<AttendanceEntity> findByLessonAndStudent(LessonEntity lessonEntity, StudentEntity studentEntity);
 }

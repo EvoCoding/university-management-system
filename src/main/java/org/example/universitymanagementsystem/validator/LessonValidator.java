@@ -9,7 +9,7 @@ import java.time.temporal.ChronoUnit;
 @Validator
 public class LessonValidator {
     public void validateLesson(LessonEntity lessonEntity) {
-    validateDuration(lessonEntity);
+        validateDuration(lessonEntity);
     }
 
     private void validateDuration(LessonEntity lessonEntity) {

@@ -14,9 +14,13 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface InstructorMapper {
     List<InstructorDTO> toInstructorDTOList(List<InstructorEntity> instructorEntities);
+
     InstructorDTO toInstructorDTO(InstructorEntity instructor);
+
     InstructorDetailsDTO toInstructorDetailsDTO(InstructorEntity instructor);
+
     InstructorEntity toInstructor(CreateInstructorDTO createInstructorDTO);
+
     void toInstructor(UpdateInstructorDTO updateInstructorDTO, @MappingTarget InstructorEntity instructor);
 
     @Mapping(target = "namePhrase", expression = "java(trimToNull(findInstructorsDTO.getNamePhrase()))")

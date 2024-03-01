@@ -32,6 +32,6 @@ public class DepartmentEntity {
     @UpdateTimestamp
     private Instant modifiedAt;
 
-    @OneToMany(mappedBy = "department",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<InstructorEntity> instructors;
 }

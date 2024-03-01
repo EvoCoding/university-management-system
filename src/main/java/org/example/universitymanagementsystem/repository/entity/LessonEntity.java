@@ -2,7 +2,6 @@ package org.example.universitymanagementsystem.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.logging.log4j.CloseableThreadContext;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -27,7 +26,7 @@ public class LessonEntity {
     @JoinColumn(name = "course_id", nullable = false)
     private CourseEntity course;
 
-    @OneToMany(mappedBy = "lesson",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "lesson", fetch = FetchType.LAZY)
     private List<AttendanceEntity> attendanceEntityList;
 
     @Column(nullable = false)

@@ -30,16 +30,16 @@ public class StudentEntity {
     @UpdateTimestamp
     private Instant modifiedAt;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "student_course",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"),
-            uniqueConstraints = @UniqueConstraint(name="unique_student_and_course",columnNames = {"student_id","course_id"})
+            uniqueConstraints = @UniqueConstraint(name = "unique_student_and_course", columnNames = {"student_id", "course_id"})
     )
     private List<CourseEntity> courses;
 
     @OneToOne
-    @JoinColumn(name="student_profile_id")
+    @JoinColumn(name = "student_profile_id")
     private StudentProfileEntity studentProfileEntity;
 }
