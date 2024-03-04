@@ -18,12 +18,7 @@ public class CourseSearchSpecification implements Specification<CourseEntity> {
     @Override
     public Predicate toPredicate(Root<CourseEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 
-        return Specification.where(nameLike())
-                .and(studentId())
-                .and(codePhraseLike())
-                .and(credit())
-                .and(capacity())
-                .and(isNotDeleted()).toPredicate(root, query, criteriaBuilder);
+        return Specification.where(nameLike()).and(studentId()).and(codePhraseLike()).and(credit()).and(capacity()).and(isNotDeleted()).toPredicate(root, query, criteriaBuilder);
     }
 
     public Specification<CourseEntity> studentId() {
@@ -31,8 +26,7 @@ public class CourseSearchSpecification implements Specification<CourseEntity> {
         if (studentId == null) {
             return null;
         }
-        return (root, query, criteriaBuilder) -> criteriaBuilder
-                .equal(root.join(CourseEntity_.students).get(StudentEntity_.id), studentId);
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.join(CourseEntity_.students).get(StudentEntity_.id), studentId);
     }
 
     public Specification<CourseEntity> nameLike() {
@@ -40,11 +34,7 @@ public class CourseSearchSpecification implements Specification<CourseEntity> {
         if (namePhrase == null) {
             return null;
         }
-
-        return (root, query, criteriaBuilder) -> criteriaBuilder
-                .like(root.get(CourseEntity_.name),
-                        '%' + namePhrase + '%', '\\');
-
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get(CourseEntity_.name), '%' + namePhrase + '%', '\\');
     }
 
     public Specification<CourseEntity> capacity() {
@@ -52,9 +42,7 @@ public class CourseSearchSpecification implements Specification<CourseEntity> {
         if (capacity == null) {
             return null;
         }
-
-        return (root, query, criteriaBuilder) -> criteriaBuilder
-                .equal(root.get(CourseEntity_.capacity), capacity);
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(CourseEntity_.capacity), capacity);
     }
 
     public Specification<CourseEntity> credit() {
@@ -63,8 +51,7 @@ public class CourseSearchSpecification implements Specification<CourseEntity> {
             return null;
         }
 
-        return (root, query, criteriaBuilder) -> criteriaBuilder
-                .equal(root.get(CourseEntity_.credit), credit);
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(CourseEntity_.credit), credit);
     }
 
     public Specification<CourseEntity> codePhraseLike() {
@@ -73,16 +60,10 @@ public class CourseSearchSpecification implements Specification<CourseEntity> {
             return null;
         }
 
-        return (root, query, criteriaBuilder) -> criteriaBuilder
-                .like(root.get(CourseEntity_.code),
-                        '%' + codePhrase + '%', '\\');
-
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get(CourseEntity_.code), '%' + codePhrase + '%', '\\');
     }
 
     public Specification<CourseEntity> isNotDeleted() {
-        return (root, query, criteriaBuilder) -> criteriaBuilder
-                .equal(root.get(CourseEntity_.isDeleted), false);
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(CourseEntity_.isDeleted), false);
     }
-
-
 }
