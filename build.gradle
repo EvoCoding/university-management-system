@@ -35,7 +35,7 @@ dependencies {
     implementation 'org.hibernate:hibernate-jpamodelgen:6.4.4.Final'
     annotationProcessor 'org.hibernate:hibernate-jpamodelgen:6.4.4.Final'
     compileOnly 'org.hibernate:hibernate-jpamodelgen:6.4.4.Final'
-
+    implementation 'org.liquibase:liquibase-core'
 }
 
 tasks.named('test') {

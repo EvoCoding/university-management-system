@@ -39,7 +39,7 @@ public class StudentEntity {
     )
     private List<CourseEntity> courses;
 
-    @OneToOne
-    @JoinColumn(name = "student_profile_id")
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
     private StudentProfileEntity studentProfileEntity;
 }
