@@ -7,8 +7,10 @@ import org.example.universitymanagementsystem.exception.CourseNotFoundException;
 import org.example.universitymanagementsystem.mapper.CourseMapper;
 import org.example.universitymanagementsystem.repository.CourseRepository;
 import org.example.universitymanagementsystem.repository.entity.CourseEntity;
+import org.example.universitymanagementsystem.specification.CourseSearchSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import java.util.Optional;
 
@@ -28,8 +30,10 @@ public class CourseManager {
     }
 
     public Page<CourseEntity> findAll(FindCoursesDTO findCoursesDTO) {
-        var pageable = PageRequest.of(findCoursesDTO.getPage(), findCoursesDTO.getSize());
+        var pageable = PageRequest.of(findCoursesDTO.getPage(), findCoursesDTO.getSize(), Sort.by("id").ascending());
+
         var findCoursesVo = courseMapper.toFindCoursesVo(findCoursesDTO);
-        return courseRepository.findAll(findCoursesVo, pageable);
+        var courseSearchSpecification = new CourseSearchSpecification(findCoursesVo);
+        return courseRepository.findAll(courseSearchSpecification, pageable);
     }
 }
