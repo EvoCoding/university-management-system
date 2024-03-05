@@ -17,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StudentEntity {
+@DiscriminatorValue("STUDENT")
+public class StudentEntity extends UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -42,4 +43,9 @@ public class StudentEntity {
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private StudentProfileEntity studentProfileEntity;
+
+    @Override
+    public UserTypeEnum getUserType() {
+        return UserTypeEnum.STUDENT;
+    }
 }

@@ -17,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class InstructorEntity {
+@DiscriminatorValue("INSTUCTOR")
+public class InstructorEntity extends UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,4 +42,9 @@ public class InstructorEntity {
     @OneToOne
     @JoinColumn(name = "instructor_profile_id")
     private InstructorProfileEntity instructorProfileEntity;
+
+    @Override
+    public UserTypeEnum getUserType() {
+        return UserTypeEnum.INSTRUCTOR;
+    }
 }

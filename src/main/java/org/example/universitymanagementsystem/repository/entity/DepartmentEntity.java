@@ -17,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DepartmentEntity {
+@DiscriminatorValue("DEPARTMENT")
+public class DepartmentEntity extends UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,4 +35,9 @@ public class DepartmentEntity {
 
     @OneToMany(mappedBy = "department", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<InstructorEntity> instructors;
+
+    @Override
+    public UserTypeEnum getUserType() {
+        return UserTypeEnum.DEPARTMENT;
+    }
 }
