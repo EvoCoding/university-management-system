@@ -5,10 +5,17 @@ import lombok.RequiredArgsConstructor;
 import org.example.universitymanagementsystem.dto.*;
 import org.example.universitymanagementsystem.service.InstructorService;
 import org.example.universitymanagementsystem.shared.PageResponse;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/api/v1/instructors")
@@ -25,6 +32,18 @@ public class InstructorController {
     @PreAuthorize("hasAnyAuthority('INSTRUCTOR', 'DEPARTMENT')")
     public ResponseEntity<InstructorDetailsDTO> findById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(instructorService.findById(id));
+    }
+
+    @GetMapping("/export")
+    @PreAuthorize("hasAnyAuthority('DEPARTMENT')")
+    public ResponseEntity<Resource> export(FindInstructorsDTO findInstructorsDTO) {
+        InputStreamResource inputStreamResource = instructorService.export(findInstructorsDTO);
+        var filename = "University Management System Instructors - " + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now()) + ".xlsx";
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
+                .contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
+                .body(inputStreamResource);
     }
 
     @PostMapping

@@ -12,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
+import java.util.List;
+
 @Manager
 @RequiredArgsConstructor
 public class StudentManager {
@@ -28,6 +30,12 @@ public class StudentManager {
         var findStudentsVo = studentMapper.toFindStudentsVo(findStudentsDTO);
         var studentSearchSpecification = new StudentSearchSpecification(findStudentsVo);
         return studentRepository.findAll(studentSearchSpecification, pageable);
+    }
+
+    public List<StudentEntity> findAllToExport(FindStudentsDTO findStudentsDTO) {
+        var findStudentsVo = studentMapper.toFindStudentsVo(findStudentsDTO);
+        var studentSearchSpecification = new StudentSearchSpecification(findStudentsVo);
+        return studentRepository.findAll(studentSearchSpecification);
     }
 }
 
