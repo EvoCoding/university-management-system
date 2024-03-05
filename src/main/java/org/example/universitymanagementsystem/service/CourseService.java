@@ -6,6 +6,7 @@ import org.example.universitymanagementsystem.dto.CreateCourseDTO;
 import org.example.universitymanagementsystem.dto.FindCoursesDTO;
 import org.example.universitymanagementsystem.dto.UpdateCourseDTO;
 import org.example.universitymanagementsystem.exception.CourseNotFoundException;
+import org.example.universitymanagementsystem.export.CourseExportHandler;
 import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.CourseMapper;
@@ -13,8 +14,11 @@ import org.example.universitymanagementsystem.repository.CourseRepository;
 import org.example.universitymanagementsystem.shared.PageRequest;
 import org.example.universitymanagementsystem.shared.PageResponse;
 import org.example.universitymanagementsystem.validator.CourseValidator;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.io.InputStream;
 
 @Service
 @RequiredArgsConstructor
@@ -24,11 +28,22 @@ public class CourseService {
     private final CourseManager courseManager;
     private final CourseValidator courseValidator;
     private final InstructorManager instructorManager;
+    private final CourseExportHandler courseExportHandler;
 
     public PageResponse<CourseDTO> findAll(FindCoursesDTO findCoursesDTO) {
         var courseEntities = courseManager.findAll(findCoursesDTO);
         var content = courseMapper.toCourseDTOList(courseEntities.getContent());
         return new PageResponse<>(content, courseEntities.getTotalPages(), courseEntities.getTotalElements());
+    }
+
+    public InputStreamResource export(FindCoursesDTO findCoursesDTO) {
+        var courseEntities = courseManager.findAllToExport(findCoursesDTO);
+        var content = courseMapper.toCourseDTOList(courseEntities);
+        final String[] headers = {"ID", "Name", "Capacity", "Code", "Credit", "Creation time", "Modification time"};
+
+        var file = courseExportHandler.export(headers, content);
+
+        return new InputStreamResource(file);
     }
 
     public CourseDTO findById(@PathVariable Long id) {

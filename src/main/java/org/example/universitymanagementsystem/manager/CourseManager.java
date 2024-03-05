@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
+import java.util.List;
 import java.util.Optional;
 
 @Manager
@@ -31,9 +32,14 @@ public class CourseManager {
 
     public Page<CourseEntity> findAll(FindCoursesDTO findCoursesDTO) {
         var pageable = PageRequest.of(findCoursesDTO.getPage(), findCoursesDTO.getSize(), Sort.by("id").ascending());
-
         var findCoursesVo = courseMapper.toFindCoursesVo(findCoursesDTO);
         var courseSearchSpecification = new CourseSearchSpecification(findCoursesVo);
         return courseRepository.findAll(courseSearchSpecification, pageable);
+    }
+
+    public List<CourseEntity> findAllToExport(FindCoursesDTO findCoursesDTO) {
+        var findCoursesVo = courseMapper.toFindCoursesVo(findCoursesDTO);
+        var courseSearchSpecification = new CourseSearchSpecification(findCoursesVo);
+        return courseRepository.findAll(courseSearchSpecification);
     }
 }

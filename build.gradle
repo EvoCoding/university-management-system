@@ -40,6 +40,7 @@ dependencies {
     annotationProcessor 'org.hibernate:hibernate-jpamodelgen:6.4.4.Final'
     compileOnly 'org.hibernate:hibernate-jpamodelgen:6.4.4.Final'
     implementation 'org.liquibase:liquibase-core'
+    implementation 'org.apache.poi:poi-ooxml:5.2.4'
 }
 
 tasks.named('test') {
