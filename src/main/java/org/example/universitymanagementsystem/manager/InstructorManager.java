@@ -7,8 +7,12 @@ import org.example.universitymanagementsystem.exception.InstructorNotFoundExcept
 import org.example.universitymanagementsystem.mapper.InstructorMapper;
 import org.example.universitymanagementsystem.repository.InstructorRepository;
 import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
+import org.example.universitymanagementsystem.specification.InstructorSearchSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+
+import java.util.List;
 
 @Manager
 @RequiredArgsConstructor
@@ -22,9 +26,16 @@ public class InstructorManager {
     }
 
     public Page<InstructorEntity> findAll(FindInstructorsDTO findInstructorsDTO) {
-        var pageable = PageRequest.of(findInstructorsDTO.getPage(), findInstructorsDTO.getSize());
+        var pageable = PageRequest.of(findInstructorsDTO.getPage(), findInstructorsDTO.getSize(), Sort.by("id").ascending());
         var findInstructorsVo = instructorMapper.toFindInstructorsVo(findInstructorsDTO);
-        return instructorRepository.findAll(findInstructorsVo, pageable);
+        var instructorSearchSpecification = new InstructorSearchSpecification(findInstructorsVo);
+        return instructorRepository.findAll(instructorSearchSpecification, pageable);
+    }
+
+    public List<InstructorEntity> findAllToExport(FindInstructorsDTO findInstructorsDTO) {
+        var findInstructorsVo = instructorMapper.toFindInstructorsVo(findInstructorsDTO);
+        var studentSearchSpecification = new InstructorSearchSpecification(findInstructorsVo);
+        return instructorRepository.findAll(studentSearchSpecification);
     }
 
 }

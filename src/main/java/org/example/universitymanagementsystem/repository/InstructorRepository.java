@@ -5,13 +5,14 @@ import org.example.universitymanagementsystem.repository.vo.FindInstructorsVo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface InstructorRepository extends JpaRepository<InstructorEntity, Long> {
+public interface InstructorRepository extends JpaRepository<InstructorEntity, Long>, JpaSpecificationExecutor<InstructorEntity> {
 
     @Query("SELECT instructor  FROM InstructorEntity instructor" +
             " LEFT JOIN instructor.instructorProfileEntity instructorProfile" +

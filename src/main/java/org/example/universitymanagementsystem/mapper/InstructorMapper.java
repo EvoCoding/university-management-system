@@ -1,10 +1,8 @@
 package org.example.universitymanagementsystem.mapper;
 
 import org.example.universitymanagementsystem.dto.*;
-import org.example.universitymanagementsystem.repository.entity.DepartmentEntity;
 import org.example.universitymanagementsystem.repository.entity.InstructorEntity;
 import org.example.universitymanagementsystem.repository.vo.FindInstructorsVo;
-import org.example.universitymanagementsystem.repository.vo.FindStudentsVo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
