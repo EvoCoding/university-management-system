@@ -11,14 +11,11 @@ import org.example.universitymanagementsystem.manager.CourseManager;
 import org.example.universitymanagementsystem.manager.InstructorManager;
 import org.example.universitymanagementsystem.mapper.CourseMapper;
 import org.example.universitymanagementsystem.repository.CourseRepository;
-import org.example.universitymanagementsystem.shared.PageRequest;
 import org.example.universitymanagementsystem.shared.PageResponse;
 import org.example.universitymanagementsystem.validator.CourseValidator;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.io.InputStream;
 
 @Service
 @RequiredArgsConstructor

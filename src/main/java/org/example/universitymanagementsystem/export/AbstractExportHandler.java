@@ -13,7 +13,6 @@ import java.io.InputStream;
 import java.util.List;
 
 public abstract class AbstractExportHandler {
-    private final int maxRowsPerSheet = 400000;
 
     public InputStream export(String[] headers, List<?> content) {
         try (SXSSFWorkbook workbook = new SXSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
@@ -46,6 +45,7 @@ public abstract class AbstractExportHandler {
                 sheet.setAutoFilter(new CellRangeAddress(0, 0, 0, headers.length - 1));
                 sheet.createFreezePane(0, 1);
 
+                int maxRowsPerSheet = 400000;
                 int endIndex = Math.min(contentIndex + maxRowsPerSheet - 1, contentCount);
                 writeContent(sheet, content.subList(contentIndex, endIndex));
                 contentIndex = endIndex;
