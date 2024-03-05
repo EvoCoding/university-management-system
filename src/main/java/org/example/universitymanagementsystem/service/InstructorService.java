@@ -17,8 +17,8 @@ public class InstructorService {
 
     public PageResponse<InstructorDTO> findAll(FindInstructorsDTO findInstructorsDTO) {
         var instructorEntities = instructorManager.findAll(findInstructorsDTO);
-        var content=instructorMapper.toInstructorDTOList(instructorEntities.getContent());
-        return new PageResponse<>(content ,instructorEntities.getTotalPages(),instructorEntities.getTotalElements());
+        var content = instructorMapper.toInstructorDTOList(instructorEntities.getContent());
+        return new PageResponse<>(content, instructorEntities.getTotalPages(), instructorEntities.getTotalElements());
     }
 
     public InstructorDetailsDTO findById(Long id) {

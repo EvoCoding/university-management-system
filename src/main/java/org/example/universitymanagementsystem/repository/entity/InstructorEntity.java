@@ -31,14 +31,14 @@ public class InstructorEntity {
     @UpdateTimestamp
     private Instant modifiedAt;
 
-    @OneToMany(mappedBy = "instructor",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "instructor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CourseEntity> courses;
 
     @ManyToOne
-    @JoinColumn(name="department_id")
+    @JoinColumn(name = "department_id")
     private DepartmentEntity department;
 
     @OneToOne
-    @JoinColumn(name="instructor_profile_id")
+    @JoinColumn(name = "instructor_profile_id")
     private InstructorProfileEntity instructorProfileEntity;
 }

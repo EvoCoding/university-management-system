@@ -21,7 +21,7 @@ public class StudentService {
     public PageResponse<StudentDTO> findAll(FindStudentsDTO findStudentsDTO) {
         var studentEntities = studentManager.findAll(findStudentsDTO);
         var content = studentMapper.toStudentDTOList(studentEntities.getContent());
-        return new PageResponse<>(content,studentEntities.getTotalPages(),studentEntities.getTotalElements());
+        return new PageResponse<>(content, studentEntities.getTotalPages(), studentEntities.getTotalElements());
     }
 
     public StudentDTO findById(Long id) {

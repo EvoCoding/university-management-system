@@ -12,9 +12,13 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface DepartmentMapper {
     List<DepartmentDTO> toDepartmentDTOList(List<DepartmentEntity> departmentEntities);
+
     DepartmentDTO toDepartmentDto(DepartmentEntity department);
+
     DepartmentDetailsDTO toDepartmentDetailsDTO(DepartmentEntity department);
+
     DepartmentEntity toDepartment(CreateDepartmentDTO createDepartmentDTO);
+
     void toDepartment(UpdateDepartmentDto updateDepartmentDto, @MappingTarget DepartmentEntity departmentEntity);
 
     @Mapping(target = "namePhrase", expression = "java(trimToNull(findDepartmentsDTO.getNamePhrase()))")

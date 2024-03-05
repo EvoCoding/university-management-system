@@ -23,10 +23,10 @@ public class GradeService {
     public void create(CreateGradeDTO createGradeDTO) {
         var student = studentManager.getStudent(createGradeDTO.getStudentId());
         var course = courseManager.getCourse(createGradeDTO.getCourseId());
-        var instructor=instructorManager.getInstructor(createGradeDTO.getInstructorId());
-        var grade=gradeMapper.toGrade(createGradeDTO);
+        var instructor = instructorManager.getInstructor(createGradeDTO.getInstructorId());
+        var grade = gradeMapper.toGrade(createGradeDTO);
 
-        gradeValidator.validate(student,course,instructor);
+        gradeValidator.validate(student, course, instructor);
 
         grade.setCourse(course);
         grade.setInstructor(instructor);

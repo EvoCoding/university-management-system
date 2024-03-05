@@ -40,7 +40,7 @@ public class CourseEntity {
     @JoinColumn(name = "instructor_id")
     private InstructorEntity instructor;
 
-    @OneToMany(mappedBy = "course",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
     private List<LessonEntity> lessonEntities;
 
 

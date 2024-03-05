@@ -8,9 +8,9 @@ import org.example.universitymanagementsystem.repository.entity.StudentEntity;
 
 @Validator
 public class GradeValidator {
-    public void validate(StudentEntity student, CourseEntity course,InstructorEntity instructor) {
-       validateCourseAndInstructor(course,instructor);
-       validateCourseAndStudent(course,student);
+    public void validate(StudentEntity student, CourseEntity course, InstructorEntity instructor) {
+        validateCourseAndInstructor(course, instructor);
+        validateCourseAndStudent(course, student);
     }
 
     private void validateCourseAndInstructor(CourseEntity course, InstructorEntity instructor) {

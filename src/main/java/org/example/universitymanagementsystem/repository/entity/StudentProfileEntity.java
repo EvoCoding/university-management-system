@@ -31,7 +31,7 @@ public class StudentProfileEntity {
     private Instant modifiedAt;
 
     @OneToOne
-    @JoinColumn(name="student_id")
+    @JoinColumn(name = "student_id")
     private StudentEntity student;
 
 }

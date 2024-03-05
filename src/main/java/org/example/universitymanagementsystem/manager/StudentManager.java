@@ -7,8 +7,10 @@ import org.example.universitymanagementsystem.exception.StudentNotFoundException
 import org.example.universitymanagementsystem.mapper.StudentMapper;
 import org.example.universitymanagementsystem.repository.StudentRepository;
 import org.example.universitymanagementsystem.repository.entity.StudentEntity;
+import org.example.universitymanagementsystem.specification.StudentSearchSpecification;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 @Manager
 @RequiredArgsConstructor
@@ -22,9 +24,10 @@ public class StudentManager {
     }
 
     public Page<StudentEntity> findAll(FindStudentsDTO findStudentsDTO) {
-        var pageable = PageRequest.of(findStudentsDTO.getPage(), findStudentsDTO.getSize());
+        var pageable = PageRequest.of(findStudentsDTO.getPage(), findStudentsDTO.getSize(), Sort.by("id").ascending());
         var findStudentsVo = studentMapper.toFindStudentsVo(findStudentsDTO);
-        return studentRepository.findAll(findStudentsVo, pageable);
+        var studentSearchSpecification = new StudentSearchSpecification(findStudentsVo);
+        return studentRepository.findAll(studentSearchSpecification, pageable);
     }
 }
 

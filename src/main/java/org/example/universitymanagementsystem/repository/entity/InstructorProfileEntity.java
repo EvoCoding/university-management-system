@@ -34,6 +34,6 @@ public class InstructorProfileEntity {
     private Instant modifiedAt;
 
     @OneToOne
-    @JoinColumn(name="instructor_id")
+    @JoinColumn(name = "instructor_id")
     private InstructorEntity instructor;
 }
