@@ -5,6 +5,6 @@ RUN gradle build --no-daemon
 
 FROM openjdk:17.0.1-jdk-slim
 
-COPY --from=builder /home/gradle/src/build/libs/*.jar /app/app.jar
+COPY --from=builder /home/gradle/src/build/libs/*SNAPSHOT.jar /app/app.jar
 CMD ["java", "-jar", "/app/app.jar"]
 EXPOSE 8090
