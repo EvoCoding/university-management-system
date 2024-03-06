@@ -3,7 +3,7 @@ COPY . /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle build --no-daemon
 
-FROM openjdk:17-jre-slim
+FROM openjdk:17.0.1-jdk-slim
 
 COPY --from=builder /home/gradle/src/build/libs/*.jar /app/app.jar
 CMD ["java", "-jar", "/app/app.jar"]
